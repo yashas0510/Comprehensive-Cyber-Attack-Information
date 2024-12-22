@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Cyber Attack Updates</title>
+</head>
+<body>
+    <header>
+        <h1>Comprehensive Cyber Attack Information</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Historical Cyber Attacks</h2>
+            <div id="historical-container">
+                <p>Loading historical data...</p>
+            </div>
+        </section>
+        <section>
+            <h2>Real-Time Cyber Attack Updates</h2>
+            <div id="news-container">
+                <p>Loading real-time news...</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- JavaScript for Fetching Data -->
+    <script>
+        // Detailed historical cyber attacks data
+        const historicalAttacks = [
+            {
+                name: "2007 Cyberattacks on Estonia",
+                year: 2007,
+                description: "A series of coordinated attacks targeted government, media, and financial institutions in Estonia, leading to widespread disruption."
+            },
+            {
+                name: "2008 Cyberattacks During the Russo-Georgian War",
+                year: 2008,
+                description: "Cyberattacks launched against Georgian websites just before military conflict began."
+            },
+            {
+                name: "2010 Stuxnet Worm",
+                year: 2010,
+                description: "This sophisticated worm targeted Iranian nuclear facilities, specifically designed to disrupt centrifuge operations."
+            },
+            {
+                name: "2011 PlayStation Network Outage",
+                year: 2011,
+                description: "A major security breach exposed personal information of approximately 77 million accounts."
+            },
+            {
+                name: "2013 Yahoo Data Breach",
+                year: 2013,
+                description: "Two separate breaches compromised data from over three billion Yahoo accounts."
+            },
+            {
+                name: "2014 Sony Pictures Hack",
+                year: 2014,
+                description: "A cyberattack attributed to North Korea leaked sensitive data, including unreleased films and employee information."
+            },
+            {
+                name: "2017 WannaCry Ransomware Attack",
+                year: 2017,
+                description: "This ransomware exploited a vulnerability in Windows systems, affecting hundreds of thousands of computers across 150 countries."
+            },
+            {
+                name: "2017 NotPetya Attack",
+                year: 2017,
+                description: "Initially targeting Ukraine, this ransomware spread globally through compromised software updates."
+            },
+            {
+                name: "2020 SolarWinds Hack",
+                year: 2020,
+                description: "A sophisticated supply chain attack that compromised multiple U.S. government agencies and corporations."
+            },
+            {
+                name: "2022 Ukraine Cyberattacks",
+                year: 2022,
+                description: "A series of cyberattacks occurred during the lead-up to Russia's invasion of Ukraine, targeting government websites and critical infrastructure."
+            }
+        ];
+
+        // Function to display historical attacks
+        function displayHistoricalData() {
+            const container = document.getElementById('historical-container');
+            container.innerHTML = ''; // Clear the container
+            historicalAttacks.forEach(attack => {
+                const attackItem = `
+                    <div class="attack-item">
+                        <h3>${attack.name} (${attack.year})</h3>
+                        <p>${attack.description}</p>
+                    </div>
+                `;
+                container.innerHTML += attackItem;
+            });
+        }
+
+        // Call the function to display historical data on page load
+        window.onload = () => {
+            displayHistoricalData();
+        };
+    </script>
+
+    <!-- JavaScript code for floating button -->
+    <script>
+        const tips = [
+            "Always use strong passwords and change them regularly.",
+            "Enable two-factor authentication on your accounts.",
+            "Be cautious of phishing emails and links.",
+            "Update your software and systems regularly.",
+            "Use a VPN when accessing public Wi-Fi.",
+            "Back up your data regularly to avoid loss.",
+        ];
+
+        // Function to get a random tip
+        function getRandomTip() {
+            const randomIndex = Math.floor(Math.random() * tips.length);
+            return tips[randomIndex];
+        }
+
+        // Function to create and show the floating button
+        function createFloatingButton() {
+            const button = document.createElement('div');
+            button.className = 'floating-button';
+            button.innerHTML = '?'; // Use a question mark as an icon
+
+            // Show random tip on click
+            button.onclick = function() {
+                alert(getRandomTip());
+            };
+
+            // Append the button to the body
+            document.body.appendChild(button);
+
+            // Change button color every few seconds
+            setInterval(() => {
+                const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+                button.style.backgroundColor = randomColor; 
+            }, 2000);
+
+            // Move the button randomly around the screen every 2 seconds
+            setInterval(() => {
+                const x = Math.random() * (window.innerWidth - button.clientWidth);
+                const y = Math.random() * (window.innerHeight - button.clientHeight);
+                button.style.transform = `translate(${x}px, ${y}px)`;
+            }, 2000);
+        }
+
+        // Immediately create one instance of the floating button
+        createFloatingButton();
+    </script>
+
+</body>
+</html>
